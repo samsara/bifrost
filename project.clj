@@ -12,7 +12,8 @@
                  [clj-kafka "0.2.6-0.8" :exclusions [org.slf4j/slf4j-simple]]
                  [riemann-clojure-client "0.2.9"]
                  [baldr "0.1.1"]
-                 [org.pingles/clj-aws-s3 "0.3.10"]
+                 [org.pingles/clj-aws-s3 "0.3.10" :exclusions [joda-time]]
+                 [joda-time "2.8.1"]
                  [metrics-clojure "1.0.1"]
                  [org.xerial.snappy/snappy-java "1.1.0.1"]
                  [org.clojure/tools.cli "0.3.1"]
@@ -26,4 +27,9 @@
                        :aot          [uswitch.bifrost.main]}
              :dev {:source-paths ["dev"]
                    :dependencies [[org.clojure/tools.namespace "0.2.3"]
-                                  [org.slf4j/slf4j-simple "1.6.4"]]}})
+                                  [org.slf4j/slf4j-simple "1.6.4"]]
+                   :plugins [[lein-bin "0.3.5"]]}}
+
+  :jvm-opts ["-server" "-Dfile.encoding=utf-8"]
+  :bin {:name "bifrost" :bootclasspath false}
+  )
